@@ -1,45 +1,542 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
-<title>首页</title>
-<style>ul {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
-	background-color: grey;
-}
 
-li {
-	float: left;
-}
+	<head>
+		<meta charset="utf-8" />
+		<title>湘大新闻</title>
+		<style>
+			#boxbig {
+				width: auto;
+				height: 900px;
+				background-color: white;
+				padding: 20px;
+			}
+			
+			#boxA {
+				width: auto;
+				height: 80px;
+			}
+			
+			#box1 {
+				text-align: center;
+				width: 300px;
+				height: 50px;
+				background-color: white;
+				border-color: darkgray;
+				margin: 0 auto;
+				margin-top: 10px;
+			}
+			
+			.dropbtn {
+				background-color: white;
+				color: black;
+				padding: 15px;
+				font-size: 15px;
+				border: none;
+				cursor: pointer;
+			}
+			
+			.dropdown {
+				position: relative;
+				display: inline-block;
+			}
+			
+			.dropdown-content {
+				display: none;
+				position: absolute;
+				background-color: white;
+				min-width: 10px;
+			}
+			
+			.dropdown-content a {
+				color: black;
+				padding: 12px 16px;
+				text-decoration: none;
+				display: block;
+			}
+			
+			.dropdown-content a:hover {
+				background-color: grey
+			}
+			
+			.dropdown:hover .dropdown-content {
+				display: block;
+			}
+			
+			.dropdown:hover .dropbtn {
+				background-color: white;
+			}
+			
+			#box2 {
+				width: 280px;
+				height: 60px;
+				background-color: white;
+				float: left;
+			}
+			
+			#box3 {
+				width: 50px;
+				height: 30px;
+				position: absolute;
+				top: 40px;
+				right: 40px;
+				border-color: darkgray;
+				text-align: center;
+				padding-top: 10px;
+			}
+			
+			#boxB {
+				width: auto;
+				height: 50px;
+				position: absolute;
+				top: 130px;
+				left: 30px;
+			}
+			
+			ul {
+				list-style-type: none;
+				margin: 0;
+				padding: 0px;
+				overflow: hidden;
+				background-color: cornflowerblue;
+				padding-left: ;
+			}
+			
+			li {
+				float: left;
+			}
+			
+			li a {
+				display: block;
+				color: white;
+				text-align: center;
+				padding: 14px 16px;
+				text-decoration: none;
+				margin-right: 59px;
+				margin-left: 58px;
+			}
+			
+			li {
+				border-right: 1px solid #bbb;
+			}
+			
+			li:last-child {
+				border-right: none;
+			}
+			
+			li a:hover {
+				background-color: darkcyan;
+			}
+			
+			li a:focus {
+				background-color: aqua;
+			}
+			
+			#boxC {
+				width: 1450px;
+				height: 80px;
+				position: absolute;
+				top: 200px;
+				left: 30px;
+			}
+			
+			#box4 {
+				width: 930px;
+				height: 70px;
+				border: solid;
+			}
+			
+			#box5 {
+				width: 500px;
+				height: 70px;
+				float: right;
+				position: absolute;
+				top: 0px;
+				right: 0px;
+			}
+			
+			.img {
+				margin: 0px;
+				float: left;
+				width: 880px;
+			}
+			
+			#boxD {
+				width: 1470px;
+				height: 620px;
+				position: absolute;
+				top: 100px;
+				left: 0px;
+			}
+			
+			#boxa {
+				width: 460px;
+				height: 600px;
+				margin: 10px;
+				margin-left: 0px;
+				background-color: white;
+				float: left;
+			}
+			
+			#boxb {
+				width: 460px;
+				height: 600px;
+				margin: 10px;
+				background-color: white;
+				float: left;
+			}
+			
+			#boxc {
+				width: 490px;
+				height: 600px;
+				margin: 10px;
+				background-color: white;
+				float: left;
+			}
+			
+			.box1 {
+				width: 450px;
+				height: 40px;
+				background-color: white;
+			}
+			
+			.box2 {
+				width: 450px;
+				height: 30px;
+				background-color: white;
+			}
+			
+			a {
+				color: black;
+			}
+			
+			a:hover {
+				color: cornflowerblue;
+			}
+			
+			a {
+				text-decoration: none;
+			}
+			
+			.n {
+				text-decoration: underline;
+			}
+			
+			.line {
+				line-break: normal;
+			}
+			
+			.img1 {
+				margin: 0px;
+				float: left;
+				width: 250px;
+			}
+			
+			.box4 {
+				width: 200px;
+				height: 150px;
+				background-color: white;
+				position: absolute;
+				bottom: 85px;
+				left: 250px;
+			}
+			
+			.box5 {
+				width: 200px;
+				height: 150px;
+				background-color: white;
+				position: absolute;
+				bottom: 85px;
+				right: 540px;
+			}
+			
+			.box6 {
+				width: 490px;
+				height: 200px;
+				background-color: white;
+			}
+			
+			#box7 {
+				width: 490px;
+				height: 400px;
+				background-color: white;
+				position: absolute;
+				bottom: 10px;
+				right: 20px;				
+			}
+			
+			.box8 {
+				width: auto;
+				height: auto;
+				background-color: white;
+			}
+			
+		</style>
+	</head>
 
-li a {
-	display: block;
-	color: white;
-	text-align: center;
-	padding: 30px 110px;
-	text-decoration: none;
-}
+	<body>
+		<div id="boxbig">
 
-a:hover {
-	background-color: darkcyan;
-}
+			<div id="boxA">
+				<div id="box2">
+					<img src="img/0691001030761249.jpg" width="280" height="60" />
+				</div>
+				<div id="box1" style="border-radius: 15px;">
 
-a:focus {
-	background-color: aqua;
-}</style>
-</head>
-<body>
-<h1 align="center">首页</h1>
-<ul>
-  <li><a href="第一次作业/index.html">第一次作业</a></li>
-  <li><a href="第二次作业/index.html">第二次作业</a></li>
-  <li><a href="第三次作业/index.html">第三次作业</a></li>
-  <li><a href="第四次作业/index.html">第四次作业</a></li>
-  <li><a href="第五次作业/index.html">第五次作业</a></li>
-</ul>
+					<div class="dropdown">
+						<button class="dropbtn">网页</button>
+						<div class="dropdown-content">
+							<a href="">网页</a>
+							<a href="">图片</a>
+							<a href="">视频</a>
+							<a href="">音乐</a>
+							<a href="">地图</a>
+							<a href="">问问</a>
+							<a href="">百科</a>
+							<a href="">新闻</a>
+							<a href="">购物</a>
+						</div>
+					</div>
 
-</body>
+					<input type="text" placeholder="请输入关键字">
+					<span>
+            	<button style="border-radius: 15px;">搜索</button>
+      		</span>
+				</div>
+				<div id="box3">
+					<a href="" style="color: cornflowerblue;">登录</a>
+				</div>
+			</div>
+		</div>
+
+		<div id="boxB">
+			<ul>
+				<li>
+					<a href="">
+						<font face="微软雅黑">新闻</font>
+					</a>
+				</li>
+				<li>
+					<a href="">
+						<font face="微软雅黑">视频</font>
+					</a>
+				</li>
+				<li>
+					<a href="">
+						<font face="微软雅黑">图片</font>
+					</a>
+				</li>
+				<li>
+					<a href="">
+						<font face="微软雅黑">体育</font>
+					</a>
+				</li>
+				<li>
+					<a href="">
+						<font face="微软雅黑">娱乐</font>
+					</a>
+				</li>
+				<li>
+					<a href="">
+						<font face="微软雅黑">教育</font>
+					</a>
+				</li>
+				<li>
+					<a href="">
+						<font face="微软雅黑">文化</font>
+					</a>
+				</li>
+				<li>
+					<a href="">
+						<font face="微软雅黑">天气</font>
+					</a>
+				</li>
+			</ul>
+		</div>
+
+		<div id="boxC">
+			<div id="box4">
+				<div class="img">
+					<a target="_blank" href="http://users.qq.com">
+						<img src="img/下载 (2).jpg" width="930" height="70">
+					</a>
+				</div>
+			</div>
+
+			<div id="box5">
+				<div class="img">
+					<a target="_blank" href="http://time.qq.com/?pgv_ref=ad">
+						<img src="img/下载 (1).jpg" width="500" height="70">
+					</a>
+				</div>
+			</div>
+
+			<div id="boxD">
+				<div id="boxa">
+					<p class="box1">
+						<a href="http://www.xtu.edu.cn/xdxw/xnxw/" class="n">
+							<font size="6"><b>要闻</b></font>
+						</a>
+					</p>
+					<hr />
+					<p class="box1">
+						<a href="http://news.xtu.edu.cn/html/jiaoxueky/show_11169.html">
+							<font size="6"><b>社科处开展“小课堂”系列活动</b></font>
+						</a>
+					</p>
+					<p class="box2">
+						<a href="http://news.xtu.edu.cn/html/zonghexw/show_11166.html">
+							<font size="5">
+								<我校思想政治理论课强化“红色”实践教学</font>
+						</a>
+					</p>
+					<p class="box2">
+						<a href="http://news.xtu.edu.cn/html/zonghexw/show_11156.html">
+							<font size="5">周校长专题调研碧泉书院建设发展情况</font>
+						</a>
+					</p>
+					<p class="box2">
+						<a href="http://news.xtu.edu.cn/html/zonghexw/show_11155.html">
+							<font size="5">第三十八届学生田径运动会举行</font>
+						</a>
+					</p>
+					<p class="box2">
+						<a href="http://news.xtu.edu.cn/html/jiaoxueky/show_11150.html">
+							<font size="5">我校加入湖南有色金属产业创新联盟</font>
+						</a>
+					</p>
+					<p class="box2">
+						<a href="http://news.xtu.edu.cn/html/zonghexw/show_11149.html">
+							<font size="5">我校举办基层党建工作实务专题培训</font>
+						</a>
+					</p>
+
+					<div class="img1">
+						<a target="_blank" href="http://www.cac.gov.cn/2018-09/19/c_1123454848.htm">
+							<img src="img/1123460117_1537427145275_title0h.jpg" width="250px" height="220">
+						</a>
+					</div>
+				</div>
+				<a href="http://www.cac.gov.cn/2018-09/19/c_1123454848.htm" class="box4">
+					<b>2018年国家网络安全宣传周“网络安全人才培养分论坛”成功举办 </b>
+				</a>
+
+				<div id="boxb">
+					<p class="box1">
+						<a href="" class="n">
+							<font size="6"><b>热点话题</b></font>
+						</a>
+					</p>
+					<hr />
+					<p class="box1">
+						<a href="http://news.xtu.edu.cn/html/meitigz/show_11093.html">
+							<font size="6"><b>湘大：峥嵘创业路 初心代代传</b></font>
+						</a>
+					</p>
+					<p class="box2">
+						<a href="http://www.ifeng.com/">
+							<font size="5"><b>凤凰网</b></font>
+						</a>
+						<span><input type="button"/></span>
+						<a href="http://news.xtu.edu.cn/html/meitixd/show_11106.html">
+							<font size="5">黎锦明与湘潭大学</font>
+						</a>
+					</p>
+					<p class="box2">
+						<a href="http://hnrb.voc.com.cn/">
+							<font size="5"><b>湖南日报</b></font>
+						</a>
+						<span><input type="button"/></span>
+						<a href="http://news.xtu.edu.cn/html/meitixd/show_11075.html">
+							<font size="5">大学生诵读红色经典</font>
+						</a>
+					</p>
+					<p class="box2">
+						<a href="http://www.haoqu.net/3/hunan/hnds.html">
+							<font size="5"><b>湖南都市</b></font>
+						</a>
+						<span><input type="button"/></span>
+						<a href="http://news.xtu.edu.cn/html/meitigz/show_10891.html">
+							<font size="5">《我的学 我的校》湘潭大学</font>
+						</a>
+					</p>
+					<p class="box2">
+						<a href="http://www.cepa.com.cn/">
+							<font size="5"><b>中国教育报</b></font>
+						</a>
+						<span><input type="button"/></span>
+						<a href="http://news.xtu.edu.cn/html/meitixd/show_10310.html">
+							<font size="5">校庆公告</font>
+						</a>
+					</p>
+					<p class="box2">
+						<a href="http://paper.people.com.cn/rmrb/html/2018-10/31/nbs.D110000renmrb_01.htm">
+							<font size="5"><b>人民日报</b></font>
+						</a>
+						<span><input type="button"/></span>
+						<a href="http://news.xtu.edu.cn/html/meitixd/show_9769.html">
+							<font size="5">创新不转化等于浪费</font>
+						</a>
+					</p>
+					<div class="img1">
+						<a target="_blank" href="http://www.cac.gov.cn/2018-09/17/c_1123437847.htm">
+							<img src="img/1123459912_1537425882008_title0h.jpg" width="250px" height="220">
+						</a>
+					</div>
+					<a href="http://www.cac.gov.cn/2018-09/17/c_1123437847.htm" class="box5">
+						<b>全国首趟网络安全主题列车“安安号”发车 </b>
+					</a>
+
+				</div>
+				<div id="boxc">
+					<table border="1" cellspacing="0" cellpadding="0" class="box6">
+						<tr align="center">
+							<th>
+								<a href="http://zwxxg.xtu.edu.cn/" class="box8">政务信息港</a>
+								<a href="http://xxgk.xtu.edu.cn/" class="box8">信息公开</a>
+								<a href="http://lib.xtu.edu.cn/" class="box8">图书馆</a>
+								<a href="http://zp.xtu.edu.cn/" class="box8">人才招聘</a>
+								<a href="http://fund.xtu.edu.cn/" class="box8">教育基金会</a>
+								<a href="https://www.sky31.com/" class="box8">三翼校园</a>
+							</th>
+						</tr>
+
+						<tr align="center">
+							<th>
+								<a href="http://www.xtu.edu.cn/zbgg/" class="box8">招标公告</a>
+								<a href="https://mail.xtu.edu.cn/" class="box8">湘大邮箱</a>
+								<a href="http://dzb.xtu.edu.cn/meeting/" class="box8">会议周表</a>
+								<a href="http://nic.xtu.edu.cn/" class="box8">网络服务</a>
+								<a href="http://xdgjzx.xtu.edu.cn/" class="box8">校地共建中心</a>
+								<a href="http://kczx.xtu.edu.cn/portal" class="box8">课程中心</a>
+							</th>
+						</tr>
+
+						<tr align="center">
+							<th>
+								<a href="http://jwxt.xtu.edu.cn/jsxsd/" class="box8">新教务系统</a>
+								<a href="http://jyt.hunan.gov.cn/" class="box8">湖南教育政务网</a>
+								<a href="http://www.hnedu.cn/" class="box8">湖南教育网</a>
+								<a href="http://www.moe.edu.cn/" class="box8">国家教育部</a>
+								<a href="http://www.worlduc.com/" class="box8">世界大学城</a>
+							</th>
+						</tr>
+					</table>
+				</div>
+				<div id="box7">
+					<a href="http://kbs.sports.qq.com/#nba" class="n">
+							<font size="6"><b>热点视频</b></font>
+					</a>
+					<hr />
+					<a target="_blank" href="http://v.qq.com/x/page/v00284jbdaz.html">
+							<img src="img/0.jpg" width="490px" height="300px">
+						</a>
+				</div>
+				
+			</div>
+
+		</div>
+
+	</body>
+
 </html>
