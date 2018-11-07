@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>弹性盒子</title>
+		<style type="text/css">
+
+			.menu {
+				display: flex;
+				flex-wrap: wrap;
+			}
+			
+			.menu li {
+				list-style: none;
+				height: 400px;
+				text-align: center;
+				line-height: 20px;
+				flex-basis: 100%;
+			}
+			
+			.menu li:nth-child(1) {
+				background-color: red;
+			}
+			
+			.menu li:nth-child(2) {
+				background-color: red;
+			}
+			
+			.menu li:nth-child(3) {
+				background-color: red;
+			}
+			
+			.menu li:nth-child(4) {
+				background-color: red;
+			}
+			
+			.menu li a {
+				text-decoration: none;
+				color: black;
+				font-size: 20px;
+				font-weight: 400;
+			}
+			
+			@media (min-width:480px) {
+				.menu li {
+					flex-basis: 50%;
+				}
+			}
+			
+			@media (min-width:800px) {
+				.menu li {
+					flex-basis: 33.3%;
+				}
+			}
+			
+			@media (min-width:1080px) {
+				.menu {
+					flex-wrap: nowrap;
+				}
+			}
+			
+
+			
+			#box2 {
+				width: 250px;
+				height: 70px;
+				background-color: white;
+				position: relative;
+				top: -38px;
+				left: 0px;
+				margin: 0 auto;
+				margin-top: 20px;
+			}
+			
+		</style>
+	</head>
+
+	<body bgcolor="red">
+		
+		
+		<ul class="menu">
+			<li>
+					<a target="_blank" href="https://detail.tmall.com/item.htm?spm=a1z10.10443-b-s.193.1.7fd36c3cKaCcRm&id=575757100685">
+					<img src="img/TB1NcGomNYaK1RjSZFnXXa80pXa_!!0-item_pic.jpg_240x240Q90.jpg" width="250px" height="250px" />
+				</a>
+
+				<div id="box2" align="left">
+					<a target="_blank" href="https://detail.tmall.com/item.htm?spm=a1z10.10443-b-s.193.1.7fd36c3cKaCcRm&id=575757100685">
+						<font size="2">GXG男装 &nbsp;2018冬季新款黑色连帽加厚</font>
+						<br />
+						<font size="2">双十一价￥<font size="4">829</font></font>
+						<br />
+						<font size="2"><del>￥1699</del></font>
+					</a>
+				</div>
+			</li>
+			
+			<li>
+				<a target="_blank" href="https://detail.tmall.com/item.htm?spm=a1z10.10443-b-s.193.2.6c946c3c16HFDC&id=576342901858">
+					<img src="img/TB1U1ycmSzqK1RjSZFjXXblCFXa_!!0-item_pic.jpg_240x240Q90.jpg" width="250px" height="250px" />
+				</a>
+
+				<div id="box2" align="left">
+					<a target="_blank" href="https://detail.tmall.com/item.htm?spm=a1z10.10443-b-s.193.2.6c946c3c16HFDC&id=576342901858">
+						<font size="2">GXG男装 羽绒服男士2018冬季新款黑</font>
+						<br />
+						<font size="2">双十一价￥<font size="4">1129</font></font>
+						<br />
+						<font size="2"><del>￥2299</del></font>
+					</a>
+				</div>
+			</li>
+			
+			<li>
+				<a target="_blank" href="https://detail.tmall.com/item.htm?spm=a1z10.10443-b-s.193.3.6c946c3c16HFDC&id=576461046496">
+					<img src="img/O1CN011N8ws2EoGjzBHuh_!!0-item_pic.jpg_240x240Q90.jpg" width="250px" height="250px" />
+				</a>
+
+				<div id="box2" align="left">
+					<a target="_blank" href="https://detail.tmall.com/item.htm?spm=a1z10.10443-b-s.193.3.6c946c3c16HFDC&id=576461046496">
+						<font size="2">GXG男装 2018冬季新品韩版时尚蓝灰</font>
+						<br />
+						<font size="2">双十一价￥<font size="4">999</font></font>
+						<br />
+						<font size="2"><del>￥1999</del></font>
+					</a>
+				</div>
+			</li>
+			
+			<li>
+				<a target="_blank" href="https://detail.tmall.com/item.htm?spm=a1z10.10443-b-s.193.4.6c946c3c16HFDC&id=575652238860">
+					<img src="img/TB1QburmQvoK1RjSZFDXXXY3pXa_!!0-item_pic.jpg_240x240Q90.jpg" width="250px" height="250px" />
+				</a>
+				
+				<div id="box2" align="left">
+					<a target="_blank" href="https://detail.tmall.com/item.htm?spm=a1z10.10443-b-s.193.4.6c946c3c16HFDC&id=575652238860">
+						<font size="2">GXG男装2018冬季新款黑色韩版长款</font>
+						<br />
+						<font size="2">双十一价￥<font size="4">1169</font></font>
+						<br />
+						<font size="2"><del>￥2299</del></font>
+					</a>
+				</div>
+			</li>
+		</ul>
+
+		<ul class="menu">
+			<li>
+				<a target="_blank" href="https://detail.tmall.com/item.htm?spm=a1z10.10443-b-s.193.5.6c946c3c16HFDC&id=577584280452">
+					<img src="img/O1CN011N8wrvVUPYYRq6j_!!0-item_pic.jpg_240x240Q90.jpg" width="250px" height="250px" />
+				</a>
+
+				<div id="box2" align="left">
+					<a target="_blank" href="https://detail.tmall.com/item.htm?spm=a1z10.10443-b-s.193.5.6c946c3c16HFDC&id=577584280452">
+						<font size="2">GXG男装 2018冬新款黄色连帽加厚白</font>
+						<br />
+						<font size="2">双十一价￥<font size="4">1259</font></font>
+						<br />
+						<font size="2"><del>￥2499</del></font>
+					</a>
+				</div>
+			</li>
+			
+			<li>
+				<a target="_blank" href="https://detail.tmall.com/item.htm?spm=a1z10.10443-b-s.193.6.6c946c3c16HFDC&id=576461402189">
+					<img src="img/TB1Ei08mVzqK1RjSZSgXXcpAVXa_!!0-item_pic.jpg_240x240Q90.jpg" width="250px" height="250px" />
+				</a>
+
+				<div id="box2" align="left">
+					<a target="_blank" href="https://detail.tmall.com/item.htm?spm=a1z10.10443-b-s.193.6.6c946c3c16HFDC&id=576461402189">
+						<font size="2">GXG男装 2018冬季新品男士韩版潮流</font>
+						<br />
+						<font size="2">双十一价￥<font size="4">899</font></font>
+						<br />
+						<font size="2"><del>￥1599</del></font>
+					</a>
+				</div>
+			</li>
+			
+			<li>
+				<a target="_blank" href="https://detail.tmall.com/item.htm?spm=a1z10.10443-b-s.193.7.6c946c3c16HFDC&id=576342901854">
+					<img src="img/O1CN011N8wrzv6Uealqow_!!0-item_pic.jpg_240x240Q90.jpg" width="250px" height="250px" />
+				</a>
+
+				<div id="box2" align="left">
+					<a target="_blank" href="https://detail.tmall.com/item.htm?spm=a1z10.10443-b-s.193.7.6c946c3c16HFDC&id=576342901854">
+						<font size="2">GXG男装 2018冬季新品韩版潮流格子</font>
+						<br />
+						<font size="2">双十一价￥<font size="4">719</font></font>
+						<br />
+						<font size="2"><del>￥1199</del></font>
+					</a>
+				</div>
+			</li>
+			
+			<li>
+				<a target="_blank" href="https://detail.tmall.com/item.htm?spm=a1z10.10443-b-s.193.8.6c946c3c16HFDC&id=575535845103">
+					<img src="img/TB1g7qXmIbpK1RjSZFyXXX_qFXa_!!0-item_pic.jpg_240x240Q90.jpg" width="250px" height="250px" />
+				</a>
+
+				<div id="box2" align="left">
+					<a target="_blank" href="https://detail.tmall.com/item.htm?spm=a1z10.10443-b-s.193.8.6c946c3c16HFDC&id=575535845103">
+						<font size="2">GXG男装 2018冬季新款加厚白鸭绒黑</font>
+						<br />
+						<font size="2">双十一价￥<font size="4">719</font></font>
+						<br />
+						<font size="2"><del>￥1399</del></font>
+					</a>
+				</div>
+			</li>
+		</ul>
+
+	</body>
+
+</html>
