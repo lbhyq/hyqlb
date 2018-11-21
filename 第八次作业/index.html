@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			function over(obj) {
+				obj.style.color = "red";
+			}
+
+			function out(obj) {
+				obj.style.color = "black";
+			}
+
+			window.onload = function() {
+				var name = document.getElementById('name');
+				var sex = document.getElementById('sex');
+				var btn = document.getElementById('btn');
+				var oTal = document.getElementById('tab');
+				var leg = oTal.tBodies[0].rows.length;
+				btn.onclick = function() {
+					var oTr = document.createElement('tr');
+					leg++;
+					var oTd = document.createElement('td');
+					oTd.innerHTML = leg;
+					oTr.appendChild(oTd);
+
+					var oTd = document.createElement('td');
+					oTd.innerHTML = name.value;
+					
+					document.getElementById("name").addEventListener("mouseover", function() {
+						document.getElementById("name").style.color = "red";
+					});
+					document.getElementById("name").addEventListener("mouseout", function() {
+						document.getElementById("name").style.color = "black";
+					});
+					
+					oTr.appendChild(oTd);
+
+					var oTd = document.createElement('td');
+					oTd.innerHTML = myform.s.value;
+					oTr.appendChild(oTd);
+
+					var oTd = document.createElement('td');
+					oTd.innerHTML = '<a href="javascript:;">删除</a>';
+					oTr.appendChild(oTd);
+
+					oTd.getElementsByTagName('a')[0].onclick = function() {
+						oTal.tBodies[0].removeChild(this.parentNode.parentNode);
+					};
+					oTal.tBodies[0].appendChild(oTr);
+
+				}
+			};
+		</script>
+	</head>
+
+	<body>
+		<div align="center">
+			<form name="myform">
+			姓名：<input id='name' type="text" /> 性别：
+			<input id='sex' type="radio" value="男" name="s" />男
+			<input id='sex' type="radio" value="女" name="s" checked="checked" />女
+			<input id='btn' type="button" value="添加" />
+		</form>
+		</div>
+
+		<table id="tab" width='400px' text-align=center border='1' align="center" >
+			<tr>
+				<td>编号</td>
+				<td>姓名</td>
+				<td>性别</td>
+				<td>操作</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td onmouseover="over(this)" onmouseout="out(this)">张三</td>
+				<td>男</td>
+				<td>
+					<a href="javascript:;">删除</a>
+				</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td onmouseover="over(this)" onmouseout="out(this)">李四</td>
+				<td>女</td>
+				<td>
+					<a href="javascript:;">删除</a>
+				</td>
+			</tr>
+		</table>
+	</body>
+
+</html>
