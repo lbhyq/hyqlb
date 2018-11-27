@@ -1,0 +1,859 @@
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+		<title>大学生专属小屋官方旗舰店</title>
+		<meta name="keywords" content="纯CSS,特效动画,切换效果,侧边栏,导航菜单" />
+		<meta name="description" content="纯CSS实现3种带特效动画切换效果侧边栏导航菜单。一款纯CSS3浮动导航条点击的页面转换特效动画。" />
+		<meta name="author" content="js代码" />
+		<meta name="copyright" content="js代码" />
+
+		<script type="text/javascript">
+			document.onkeydown = function() {
+				var e = window.event || arguments[0];
+				if(e.keyCode == 123) {
+					alert('璇峰皧閲嶅姵鍔ㄦ垚鏋滐紒www.jsdaima.com');
+					return false;
+				} else if((e.ctrlKey) && (e.shiftKey) && (e.keyCode == 73)) {
+					alert('璇峰皧閲嶅姵鍔ㄦ垚鏋滐紒www.jsdaima.com');
+					return false;
+				} else if((e.ctrlKey) && (e.keyCode == 85)) {
+					alert('璇峰皧閲嶅姵鍔ㄦ垚鏋滐紒www.jsdaima.com');
+					return false;
+				} else if((e.ctrlKey) && (e.keyCode == 83)) {
+					alert('璇峰皧閲嶅姵鍔ㄦ垚鏋滐紒www.jsdaima.com');
+					return false;
+				}
+			}
+			document.oncontextmenu = function() {
+				alert('璇峰皧閲嶅姵鍔ㄦ垚鏋滐紒www.jsdaima.com');
+				return false;
+			}
+
+			function myEvent(obj, ev, fu) {
+				obj.attachEvent ? obj.attachEvent('on' + ev, fu) : obj.addEventListener(ev, fu, false);
+			}
+			window.onload = function() {
+				var oBox = document.getElementById('ztbox');
+				var oLeft = document.getElementById('left');
+				var oRight = document.getElementById('right');
+				var oConter = document.getElementById('conter');
+				var oUl = oConter.getElementsByTagName('ul')[0];
+				var oLi = oConter.getElementsByTagName('li');
+				var oScroll = document.getElementById('scroll');
+				var oSpan = oScroll.getElementsByTagName('span')[0];
+				var i = 0;
+				oUl.style.width = 1250 + 'px';
+				//var iWidth = oScroll.offsetWidth/(oUl.offsetWidth / oConter.offsetWidth - 1)
+				var iWidth = 416;
+				oLeft.onmouseover = oRight.onmouseover = function() {
+					this.className = 'hover';
+					//鐐瑰嚮宸︿晶鎸夐挳
+					oLeft.onclick = function() {
+						var butscroll = oSpan.offsetLeft - iWidth;
+						oscroll(butscroll);
+					};
+					//鐐瑰嚮鍙充晶鎸夐挳
+					oRight.onclick = function() {
+						var butscroll = oSpan.offsetLeft + iWidth;
+
+						oscroll(butscroll);
+					};
+				};
+				//鐐瑰嚮婊氬姩鏉�
+				oScroll.onclick = function(e) {
+					var oEvent = e || event;
+					var butscroll = oEvent.clientX - oBox.offsetLeft - 53 - oSpan.offsetWidth / 2;
+					oscroll(butscroll);
+				};
+				oSpan.onclick = function(e) {
+					var oEvent = e || event;
+					oEvent.cancelBubble = true;
+				}
+				oLeft.onmouseout = oRight.onmouseout = function() {
+					this.className = '';
+				};
+				//鎷栨嫿婊氬姩鏉�
+				var iX = 0;
+				oSpan.onmousedown = function(e) {
+					var oEvent = e || event;
+					iX = oEvent.clientX - oSpan.offsetLeft;
+					document.onmousemove = function(e) {
+						var oEvent = e || event;
+						var l = oEvent.clientX - iX;
+						td(l);
+						return false;
+					};
+					document.onmouseup = function() {
+						document.onmousemove = null;
+						document.onmouseup = null;
+					};
+					return false;
+				};
+				//婊氳疆浜嬩欢
+				function fuScroll(e) {
+					var oEvent = e || event;
+					var l = oSpan.offsetLeft;
+					oEvent.wheelDelta ? (oEvent.wheelDelta > 0 ? l -= iWidth : l += iWidth) : (oEvent.detail ? l += iWidth : l -= iWidth);
+					oscroll(l)
+					if(oEvent.PreventDefault) {
+						oEvent.PreventDefault();
+					}
+				}
+				myEvent(oConter, 'mousewheel', fuScroll);
+				myEvent(oConter, 'DOMMouseScroll', fuScroll);
+				//婊氬姩浜嬩欢
+				function oscroll(l) {
+					if(l < 0) {
+						l = 0;
+					} else if(l > oScroll.offsetWidth - oSpan.offsetWidth) {
+						l = oScroll.offsetWidth - oSpan.offsetWidth;
+					}
+					var scrol = l / (oScroll.offsetWidth - oSpan.offsetWidth);
+					sMove(oSpan, 'left', Math.ceil(l));
+					sMove(oUl, 'left', '-' + Math.ceil((oUl.offsetWidth - (oConter.offsetWidth + 15)) * scrol));
+				}
+
+				function td(l) {
+					if(l < 0) {
+						l = 0;
+					} else if(l > oScroll.offsetWidth - oSpan.offsetWidth) {
+						l = oScroll.offsetWidth - oSpan.offsetWidth;
+					}
+					var scrol = l / (oScroll.offsetWidth - oSpan.offsetWidth);
+					oSpan.style.left = l + 'px';
+					oUl.style.left = '-' + (oUl.offsetWidth - (oConter.offsetWidth + 15)) * scrol + 'px';
+				}
+			};
+			//杩愬姩妗嗘灦
+			function getStyle(obj, attr) {
+				return obj.currentStyle ? obj.currentStyle[attr] : getComputedStyle(obj, false)[attr];
+			}
+
+			function sMove(obj, attr, iT, onEnd) {
+				clearInterval(obj.timer);
+				obj.timer = setInterval(function() {
+					dMove(obj, attr, iT, onEnd);
+				}, 30);
+			}
+
+			function dMove(obj, attr, iT, onEnd) {
+				var iCur = 0;
+				attr == 'opacity' ? iCur = parseInt(parseFloat(getStyle(obj, attr) * 100)) : iCur = parseInt(getStyle(obj, attr));
+				var iS = (iT - iCur) / 5;
+				iS = iS > 0 ? Math.ceil(iS) : Math.floor(iS);
+				if(iCur == iT) {
+					clearInterval(obj.timer);
+					if(onEnd) {
+						onEnd();
+					}
+				} else {
+					if(attr == 'opacity') {
+						obj.style.ficter = 'alpha(opacity:' + (iCur + iS) + ')';
+						obj.style.opacity = (iCur + iS) / 100;
+					} else {
+						obj.style[attr] = iCur + iS + 'px';
+					}
+				}
+			}
+		</script>
+
+		<style type="text/css">
+			@charset "utf-8";
+			* {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			
+			img {
+				border: 0;
+			}
+			
+			body {
+				background: #23375C;
+				padding-top: 150px;
+			}
+			/* ztbox */
+			
+			#ztbox {
+				width: 970px;
+				height: 420px;
+				margin: 0 auto;
+			}
+			
+			#ztbox #left {
+				width: 35px;
+				height: 63px;
+				float: left;
+				cursor: pointer;
+				background: url(../images/banner_pre.jpg) no-repeat;
+				margin-top: 140px;
+			}
+			
+			#ztbox #right {
+				width: 35px;
+				height: 63px;
+				float: left;
+				cursor: pointer;
+				background: url(../images/banner_next.jpg) no-repeat;
+				margin-top: 140px;
+			}
+			
+			#ztbox #conter {
+				width: 880px;
+				height: 400px;
+				float: left;
+				display: inline;
+				overflow: hidden;
+				position: relative;
+				margin: 0px 10px;
+			}
+			
+			#ztbox #conter ul {
+				width: auto;
+				height: 357px;
+				top: 0px;
+				left: 0px;
+				position: absolute;
+				overflow: hidden;
+			}
+			
+			#ztbox #conter li {
+				width: 167px;
+				height: 357px;
+				float: left;
+				padding: 0px 5px;
+				position: relative;
+			}
+			
+			#ztbox #conter li img {
+				width: 167px;
+				height: 357px;
+			}
+			
+			#ztbox #scroll {
+				width: 880px;
+				height: 18px;
+				left: 0px;
+				bottom: 8px;
+				cursor: pointer;
+				position: absolute;
+				background: url(../images/banner_bg2.jpg) repeat-x left center;
+			}
+			
+			#ztbox #scroll span {
+				width: 48px;
+				height: 18px;
+				left: 0px;
+				bottom: 0px;
+				cursor: pointer;
+				position: absolute;
+				background: #FFEA00;
+			}
+			/* CSS reset */
+			
+			body,
+			div,
+			dl,
+			dt,
+			dd,
+			ul,
+			ol,
+			li,
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6,
+			pre,
+			form,
+			fieldset,
+			input,
+			textarea,
+			p,
+			blockquote,
+			th,
+			td {
+				margin: 0;
+				padding: 0;
+			}
+			
+			html,
+			body {
+				margin: 0;
+				padding: 0;
+			}
+			
+			table {
+				border-collapse: collapse;
+				border-spacing: 0;
+			}
+			
+			fieldset,
+			img {
+				border: 0;
+			}
+			
+			input {
+				border: 1px solid #b0b0b0;
+				padding: 3px 5px 4px;
+				color: #979797;
+				width: 190px;
+			}
+			
+			address,
+			caption,
+			cite,
+			code,
+			dfn,
+			th,
+			var {
+				font-style: normal;
+				font-weight: normal;
+			}
+			
+			ol,
+			ul {
+				list-style: none;
+			}
+			
+			caption,
+			th {
+				text-align: left;
+			}
+			
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6 {
+				font-size: 100%;
+				font-weight: normal;
+			}
+			
+			q:before,
+			q:after {
+				content: '';
+			}
+			
+			abbr,
+			acronym {
+				border: 0;
+			}
+			/* General Demo Style */
+			
+			body {
+				font-family: 'Electrolize', Arial, sans-serif;
+				font-weight: 400;
+				font-size: 15px;
+				color: #fff;
+			}
+			
+			a {
+				text-decoration: none;
+			}
+			
+			.clr {
+				clear: both;
+			}
+			/* Top Bar Style */
+			
+			.codrops-top {
+				line-height: 24px;
+				font-size: 11px;
+				background: rgba(255, 255, 255, 1);
+				text-transform: uppercase;
+				z-index: 9999;
+				position: fixed;
+				top: 0px;
+				left: 0px;
+				width: 100%;
+				height: 24px;
+				box-shadow: 1px 0px 2px rgba(0, 0, 0, 0.2);
+				-webkit-animation: slideOut 0.5s ease-in-out 0.3s backwards;
+				-moz-animation: slideOut 0.5s ease-in-out 0.3s backwards;
+				-o-animation: slideOut 0.5s ease-in-out 0.3s backwards;
+				-ms-animation: slideOut 0.5s ease-in-out 0.3s backwards;
+				animation: slideOut 0.5s ease-in-out 0.3s backwards;
+			}
+			
+			.codrops-top a {
+				padding: 0px 10px;
+				letter-spacing: 1px;
+				color: #333;
+				text-shadow: 0px 1px 1px #fff;
+				display: block;
+				float: left;
+			}
+			
+			.codrops-top a:hover {
+				background: #fff;
+			}
+			
+			.codrops-top span.right {
+				float: right;
+			}
+			
+			.codrops-top span.right a {
+				float: left;
+				display: block;
+			}
+			/* Demo Buttons */
+			
+			#codrops-demos {
+				position: fixed;
+				z-index: 2000;
+				top: 50px;
+				right: 50px;
+			}
+			
+			#codrops-demos a {
+				display: inline-block;
+				font-size: 12px;
+				width: 60px;
+				height: 24px;
+				color: #000;
+				line-height: 24px;
+				text-align: center;
+				box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+				background: rgba(255, 255, 255, 0.9);
+				text-transform: uppercase;
+			}
+			
+			#codrops-demos a:hover {
+				background: #ddd;
+				color: #000;
+			}
+			
+			#codrops-demos a.current-demo,
+			#codrops-demos a.current-demo:hover {
+				background: #000;
+				color: #fff;
+				cursor: default;
+			}
+			
+			@-webkit-keyframes slideOut {
+				0% {
+					top: -30px;
+					opacity: 0;
+				}
+				100% {
+					top: 0px;
+					opacity: 1;
+				}
+			}
+			
+			@-moz-keyframes slideOut {
+				0% {
+					top: -30px;
+					opacity: 0;
+				}
+				100% {
+					top: 0px;
+					opacity: 1;
+				}
+			}
+			
+			@-o-keyframes slideOut {
+				0% {
+					top: -30px;
+					opacity: 0;
+				}
+				100% {
+					top: 0px;
+					opacity: 1;
+				}
+			}
+			
+			@-ms-keyframes slideOut {
+				0% {
+					top: -30px;
+					opacity: 0;
+				}
+				100% {
+					top: 0px;
+					opacity: 1;
+				}
+			}
+			
+			@keyframes slideOut {
+				0% {
+					top: -30px;
+					opacity: 0;
+				}
+				100% {
+					top: 0px;
+					opacity: 1;
+				}
+			}
+			
+			html,
+			body {
+				height: 100%;
+			}
+			
+			body {
+				width: 100%;
+				background: khaki;
+				overflow: hidden;
+			}
+			
+			#header {
+				position: absolute;
+				z-index: 2000;
+				width: 235px;
+				top: 50px;
+			}
+			
+			#header h1 {
+				font-size: 30px;
+				font-weight: 400;
+				text-transform: uppercase;
+				color: rgba(255, 255, 255, 0.9);
+				text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.3);
+				padding: 20px;
+				background: #000;
+			}
+			
+			#navigation {
+				margin-top: 20px;
+				width: 235px;
+				display: block;
+				list-style: none;
+				z-index: 3;
+			}
+			
+			#navigation a {
+				color: #444;
+				display: block;
+				background: #fff;
+				background: rgba(255, 255, 255, 0.9);
+				line-height: 50px;
+				padding: 0px 20px;
+				text-transform: uppercase;
+				margin-bottom: 6px;
+				box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+				font-size: 14px;
+			}
+			
+			#navigation a:hover {
+				background: #ddd;
+			}
+			
+			.content {
+				right: 40px;
+				left: 280px;
+				top: 0px;
+				position: absolute;
+				padding-bottom: 30px;
+			}
+			
+			.content h2 {
+				font-size: 110px;
+				padding: 10px 0px 20px 0px;
+				margin-top: 52px;
+				color: #fff;
+				color: rgba(255, 255, 255, 0.9);
+				text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.3);
+			}
+			
+			.content p {
+				font-size: 18px;
+				padding: 10px;
+				line-height: 24px;
+				color: #fff;
+				display: inline-block;
+				background: black;
+				padding: 10px;
+				margin: 3px 0px;
+			}
+			
+			.panel {
+				min-width: 100%;
+				height: 98%;
+				overflow-y: auto;
+				overflow-x: hidden;
+				margin-top: -150%;
+				position: absolute;
+				background: #000;
+				box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.6);
+				z-index: 2;
+				-webkit-transition: all .8s ease-in-out;
+				-moz-transition: all .8s ease-in-out;
+				-o-transition: all .8s ease-in-out;
+				transition: all .8s ease-in-out;
+			}
+			
+			.panel:target {
+				margin-top: 0%;
+				background-color: #ffcb00;
+			}
+			
+			#home:target~#header #navigation #link-home,
+			#portfolio:target~#header #navigation #link-portfolio,
+			#about:target~#header #navigation #link-about,
+			#contact:target~#header #navigation #link-contact {
+				background: #000;
+				color: #fff;
+			}
+			
+			#works {
+				padding: 15px 0px;
+			}
+			
+			#works li {
+				display: inline;
+			}
+			
+			#works li a {
+				padding-right: 10px;
+			}
+			
+			#works img {
+				box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+				padding: 12px;
+				background: rgba(255, 255, 255, 0.9);
+			}
+			
+			#form p {
+				background: #fff;
+				color: #000;
+			}
+			
+			#form input,
+			#form textarea {
+				background: #000;
+				color: #fff;
+				border: none;
+			}
+			
+			#form textarea {
+				width: 493px;
+				height: 100px;
+			}
+			
+			#form label {
+				padding-right: 10px;
+				float: left;
+			}
+			
+			.footnote a {
+				color: #ddd;
+			}
+			/* latin */
+			
+			@font-face {
+				font-family: 'Electrolize';
+				font-style: normal;
+				font-weight: 400;
+				src: local('Electrolize'), local('Electrolize-Regular'), url(https://fonts.gstatic.com/s/electrolize/v6/cIf5Ma1dtE0zSiGSiED7AXEBuI8.woff2) format('woff2');
+				unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+			}
+		</style>
+
+		<style>
+			* {
+				margin: 0px;
+				padding: 0px;
+				font-family: "微软雅黑";
+			}
+			
+			html,
+			iframe,
+			body {
+				height: 100%
+			}
+			
+			.none {
+				display: none !important
+			}
+			
+			@media screen and (max-width: 640px) {
+				#mobileFrame {
+					display: none !important;
+				}
+			}
+			
+			#hidemobile {
+				font-size: 14px;
+				font-weight: bold;
+				border: 1px solid silver;
+				position: absolute;
+				right: 20px;
+				top: 8px;
+				width: 15px;
+				height: 15px;
+				text-align: center;
+				padding: 0;
+				line-height: 15px;
+				border-radius: 15px;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<!-- 主页 -->
+		<div id="1" class="content">
+			<h2>主页</h2>
+			<p>项目名称：大学生校园网店创业计划</p>
+			<br />
+			<p>项目发起人：小标标</p>
+			<br />
+			<div id="ztbox">
+				<div align="center" style="color: darkorange;">
+					<font size="5">部分商品展示</font>
+				</div>
+				<div id="left"></div>
+				<div id="conter">
+					<ul>
+						<li><img src="img/11D065F89CCAD5CEE5F9B76CE6F15116.jpg" /></li>
+						<li><img src="img/A8573B19769DBECDE1976F86CD92B78F.jpg" /></li>
+						<li><img src="img/DDC8A778AC5B540D77638D2BB049A20D.jpg" /></li>
+						<li><img src="img/E3EDB9912AFA4183B2A098C4F38736AF.jpg" /></li>
+						<li><img src="img/FF329D07C5A972939FFB30F0CA3D93C5.jpg" /></li>
+						<li><img src="img/F8116735D663C046352986A134827BAE.jpg" /></li>
+						<li><img src="img/1A68CDA49FD743CC62CC5A99286E8F1E.jpg" /></li>
+					</ul>
+					<div id="scroll"><span></span></div>
+				</div>
+				<div id="right"></div>
+			</div>
+			<!--ztbox end-->
+		</div>
+		<!-- /主页 -->
+
+		<!-- 项目概况 -->
+		<div id="2" class="panel">
+			<div class="content">
+				<h2>项目概况 </h2>
+				<p>服务对象：大学生</p>
+				<br />
+				<p>销售产品：大学生生活、学习用品</p>
+				<br />
+				<p>因为对象是大学生，而大学生网购时是很重视一个网店的信誉、服务和产品的特色的，所以开一个这样的网店必须要有以下三点。</p>
+				<br />
+				<p>1、网店宗旨 :诚信求生存，服务求发展。网上开店，信用是最重要的，只有良好的信用才能赢得消费者的信赖，才能使网店长久的存活下去。现在网店的竞争相当激烈，除了要以质优价廉的商品去吸引买家外，还要有热情耐心的服务，这样才能让自己的网店在众多店铺中脱颖而出，才能让自己的网店有较好的发展。 </p>
+				<br />
+				<p>2、网店目标 :客户的需要，就是我们的满意。本网店将从淘宝的普通店铺做起，并用一年的时间积累一定的信用度，同时树立一定的知名度和品牌形象。有了信用度、知名度和品牌形象后，网店的浏览量就会成倍增加，进而就加大了成交量。有了一定的资本后，就能适当扩大网店规模，增加商品数量和种类。</p>
+				<br />
+				<p>3、创新为本:创新是人类特有的认识能力和实践能力，是人类主观能动性的高级表现，是推动民族进步和社会发展的不竭动力。一个民族要想走在时代前列，就一刻也不能没有创新思维，一刻也不能停止各种创新。创新在经济、技术、社会学以及建筑学等领域的研究中举足轻重，这对我们的创业计划也是一样。</p>
+			</div>
+		</div>
+		<!-- /项目概况 -->
+
+		<!-- 市场背景 -->
+		<div id="3" class="panel">
+			<div class="content">
+				<h2>市场背景</h2>
+				<p>1、市场潜量.随着网络的普及，加上现在的大学里都有一些领快递的地方，而且他们为了节约逛商店的时间一般会选择在网上购物，所以我认为在网上销售是一个很好的路径.</p>
+				<br />
+				<p>2、竞争者。目前在市场上的生活用品、学习用品繁多，竞争激烈。其中很多的品牌占有了市场的绝大部分，且每种品牌产品均有各自的特点和稳定期的销量，所以我们要寻找不同商家的产品出售。</p>
+				<br />
+				<p>3、 消费者需求的特点。由于我们的服务对象是大学生，所以他们对用品的需求是时尚的、个性的，他们喜欢标新立异，他们所能普遍接受的价格为低价格。</p>
+			</div>
+		</div>
+		<!-- /市场背景  -->
+
+		<!-- 营销计划 -->
+		<div id="4" class="panel">
+			<div class="content">
+				<h2>营销计划</h2>
+				<p>1、主要业务 :主要以零单销售业和团购业务为主，同时，又根据上架时间的不同各自分类，便于客户更好的查找对应时令所需要的商品。</p>
+				<br />
+				<p>2、附属业务 :线下订单业务：接收线下批量订单，统一注册新淘宝用户，批量拍货，提供送货上门服务。</p>
+			</div>
+		</div>
+		<!-- /营销计划 -->
+
+		<!-- 运营计划 -->
+		<div id="5" class="panel">
+			<div class="content">
+				<h2>运营计划</h2>
+				<p>1、管理团队 :网店每日设在线客服人员两名，团队成员分时段值班。 网店设： 经理一名，其职责是店内的全面管理，产品选择，市场宣传和业务联系； 客服主管一名，其职责是掌握供货商存货信息，管理普通客服人员接班的准点情况、服务态度，监督网络交易操作； 财务主管一名，其职责是记录网店的管理费用、前期投入资金、进货费用等账目的记录，每月汇报流动资金状况及网店盈亏。 在非常时期，招收附近大学的高素质的兼职大学生，主要是在旺季需要人员补充的时候，担任业务宣传和产品经营等活动，也可以以二级代理的身份加入. </p>
+				<br />
+				<p>2、进/发货模式 :买家拍下物品并付款→我们按提交订单发货→买家确认收货→确认交易完成 </p>
+				<br />
+				<p>3、在线客服管理 :我们在每个时间段都安排了固定的人员进行旺旺值班。对于光顾我们店的每一位客户，无论他是不是最终能购买我们的商品，我们一定竭尽所能的给予细致入微的服务。此外，对于每一位成员，我们都会安排出时间来熟悉店里所卖的商品，力争以最专业的服务，最和蔼的服务来对待每一位买家。就具体而言，我们设立在线客服的主要目的在于： （1）引导初次网购的买家，帮助他们解除网购的心理顾虑，并引导整个购买流程，从拍下商品到通过支付宝支付等等。 （2）介绍小店的商品，包括同类型商品的互推；主打商品的主推等等。 （3）对于已发货物的查件。我们通过圆通快递，能查清货物目前的位置和预计到达的时间，给买家一个答复。 （4）售后服务以和客户回访。 </p>
+				<br />
+				<p>4、 推广策略:第一、朋友推广：我们可以通过周边的朋友，宣传我们的店铺让我们的店铺点击率上升，自己的产品也得到好的销售量。第二、广告宣传：我们可以在网上发布贴子，让网上的人在贴子里看到我们店铺地址，来观光我们的店铺。第三、运用媒体：我们可以运用媒体进行宣传我们的产品，提高产品的知名度，突出我们产品的特色。</p>
+				<br />
+				<p>5、 促销策略 :（1）开店初期可进行“包邮”、“打折”、“有买有赠”等促销活动，以吸引客户； （2）每年的各种节日（如五一、十一、圣诞、元旦等）期间，进行一些适合本店客户的促销活动，如“满就送”、“满就减”等，以增加成交量； (3)在店铺信用等级上升时进行一些促销活动，如“冲钻包邮”、“冲钻打折”等。</p>
+				<br />
+				<p> 6、财务分析 :通过自带的订单明细表能清晰的反应所有订单的状态，包括收货人，商品数量，货款，发货地，配送方式，配送单号，运费等等。然后通过淘宝的卖出商品记录中，有更为明晰的订单销售信息，包括订单号，买家的具体信息，买家实际付款金额，以及买家购买商品的大致信息。</p>
+			</div>
+		</div>
+		<!-- /运营计划  -->
+
+		<!-- 核心竞争力 -->
+		<div id="6" class="panel">
+			<div class="content">
+				<h2>核心竞争力</h2>
+				<p>1、随着社会的发展，以大学生为代表的年轻一代开始频繁的网络上寻找他们喜欢的商品，网络购物已经在全世界成为了一种新的潮流。但在国内市场，网店还大多是小型的地摊店铺形式，还很少有形成针对某个特定群体的特色整体行销专卖店，尤其是对一直走在时尚前沿的大学生群体。因此，出售一些和大学生生活和学习密切相关的产品，不仅能让客户对我们的好感增加，也能让我们大学生的创新能力得到锻炼与肯定。 </p>
+				<br />
+				<p>2、网上开店对成本的要求低，它占用资金少，也基本不需要水、电、管理费等方面的支出；这样就解决了大学生没有创业资金的问题；网店经营方式灵活，基本不受时间、地域等因素的限制，只要有时间、能上网就能正常营业，而且只要少量存货就能开店，所以也可以随时更换经营其他商品；网店的客户范围十分广，只要是上网的人群都有可能成为商品的浏览者与购买者，这个范围可以是全国的网民，甚至是全球的网民。以上也是网上开店创业的优势所在。</p>
+			</div>
+		</div>
+		<!-- /核心竞争力 -->
+
+		<!-- 销售收入 -->
+		<div id="7" class="panel">
+			<div class="content">
+				<h2>销售收入</h2>
+				<p>销售收入： 刚开始预期月收入10000元，一段时间后等信誉好了之后收入肯定会慢慢提高。</p>
+			</div>
+		</div>
+		<!-- /销售收入 -->
+
+		<!-- 利润预测 -->
+		<div id="8" class="panel">
+			<div class="content">
+				<h2>利润预测</h2>
+				<p>利润预测： 刚开始预期月利润3000元，一段时间后利润肯定还会慢慢提高。</p>
+			</div>
+		</div>
+		<!-- /利润预测 -->
+
+		<!-- Header with Navigation -->
+		<div id="header">
+			<div align="center">
+				<img src="img/14771A0C2DB37512896F3A62132771D9.jpg" width="100px" height="100px" />
+			</div>
+			<h1>大学生专属小屋官方旗舰店</h1>
+			<ul id="navigation">
+				<li>
+					<a id="link-1" href="#1">主页
+				</li>
+				<li>
+					<a id="link-2" href="#2">项目概况</a>
+				</li>
+				<li>
+					<a id="link-3" href="#3">市场背景</a>
+				</li>
+				<li>
+					<a id="link-4" href="#4">营销计划</a>
+				</li>
+				<li>
+					<a id="link-5" href="#5">运营计划</a>
+				</li>
+				<li>
+					<a id="link-6" href="#6">核心竞争力</a>
+				</li>
+				<li>
+					<a id="link-7" href="#7">销售收入</a>
+				</li>
+				<li>
+					<a id="link-8" href="#8">利润预测</a>
+				</li>
+			</ul>
+
+		</div>
+
+	</body>
+
+</html>
